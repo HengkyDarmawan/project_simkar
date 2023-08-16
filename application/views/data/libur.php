@@ -11,7 +11,10 @@
         <div class="card-header py-3">
             <div class="d-flex">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2"><?= $title; ?></h6>
+                <?php if(access_jabatan("access_create",17)): ?>
+
                 <a href="<?= base_url('libur/addLibur'); ?>" class="btn btn-outline-primary btn-md">Add New Libur</a>
+                <?php endif ?>
             </div>
 
         </div>
@@ -45,8 +48,14 @@
                                 <td><?= mediumdate_indo($lib['tgl_akhir']); ?></td>
                                 <td><?= $lib['keterangan']; ?></td>
                                 <td>
+                <?php if(access_jabatan("access_update",17)): ?>
+
                                     <a href="<?= base_url(); ?>libur/editlibur/<?= $lib['id_libur']; ?>" class="btn btn-outline-success btn-sm">Edit</a>
+                <?php endif ?>
+                <?php if(access_jabatan("access_delete",17)): ?>
+
                                     <a href="<?= base_url(); ?>libur/hapuslibur/<?= $lib['id_libur']; ?>" class="btn btn-outline-danger btn-sm" onclick="return confirm('yakin?');">Delete</a>
+                <?php endif ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

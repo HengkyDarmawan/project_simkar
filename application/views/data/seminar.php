@@ -11,7 +11,10 @@
         <div class="card-header py-3">
             <div class="d-flex">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2"><?= $title; ?></h6>
+                <?php if(access_jabatan("access_create",17)): ?>
+
                 <a href="<?= base_url('seminar/addseminar'); ?>" class="btn btn-outline-primary btn-md">Add New Seminar</a>
+                <?php endif ?>
             </div>
 
         </div>
@@ -65,12 +68,18 @@
                                     <a href="<?= $seminar['url']; ?>" class="btn btn-outline-primary btn-sm" target="_blank">Link</a>
                                 </td>
                                 <td>
+                <?php if(access_jabatan("access_update",17)): ?>
+
 									<?php if($seminar['status'] == 'review') { ?>
 										<a href="<?= base_url(); ?>seminar/approved/<?= $seminar['id_seminar']; ?>" class="btn btn-outline-success btn-sm my-2" onclick="return confirm('yakin?');">Approved</a>
 										<a href="<?= base_url(); ?>seminar/rejected/<?= $seminar['id_seminar']; ?>" class="btn btn-outline-danger btn-sm my-2" onclick="return confirm('yakin?');">Rejected</a>
 									<?php } ?>
                                     <a href="<?= base_url(); ?>seminar/detailseminar/<?= $seminar['id_seminar']; ?>" class="btn btn-outline-info btn-sm my-2">Detail</a>
+                <?php endif ?>
+                <?php if(access_jabatan("access_delete",17)): ?>
+
                                     <a href="<?= base_url(); ?>seminar/hapusseminar/<?= $seminar['id_seminar']; ?>" class="btn btn-outline-danger btn-sm my-2" onclick="return confirm('yakin?');">Delete</a>
+                <?php endif ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

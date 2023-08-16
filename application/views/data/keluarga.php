@@ -11,7 +11,10 @@
         <div class="card-header py-3">
             <div class="d-flex">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2"><?= $title; ?></h6>
+                <?php if(access_jabatan("access_create",17)): ?>
+
                 <a href="<?= base_url('keluarga/addKeluarga'); ?>" class="btn btn-outline-primary btn-md">Add New Keluarga</a>
+                <?php endif ?>
             </div>
 
         </div>
@@ -60,12 +63,18 @@
                                     <?php } ?>
                                 </td>
                                 <td>
+                <?php if(access_jabatan("access_update",17)): ?>
 									<?php if($kel['status'] == 'review') { ?>
 										<a href="<?= base_url(); ?>keluarga/approved/<?= $kel['id_keluarga']; ?>" class="btn btn-outline-success btn-sm" onclick="return confirm('yakin?');">Approved</a>
 										<a href="<?= base_url(); ?>keluarga/rejected/<?= $kel['id_keluarga']; ?>" class="btn btn-outline-danger btn-sm" onclick="return confirm('yakin?');">Rejected</a>
 									<?php } ?>
+
                                     <a href="<?= base_url(); ?>keluarga/editkeluarga/<?= $kel['id_keluarga']; ?>" class="btn btn-outline-success btn-sm">Edit</a>
+                <?php endif ?>
+                <?php if(access_jabatan("access_delete",17)): ?>
+
                                     <a href="<?= base_url(); ?>keluarga/hapuskeluarga/<?= $kel['id_keluarga']; ?>" class="btn btn-outline-danger btn-sm" onclick="return confirm('yakin?');">Delete</a>
+                <?php endif ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

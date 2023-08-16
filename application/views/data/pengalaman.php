@@ -11,7 +11,10 @@
         <div class="card-header py-3">
             <div class="d-flex">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2"><?= $title; ?></h6>
+                <?php if(access_jabatan("access_create",17)): ?>
+
                 <a href="<?= base_url('pengalaman/addpengalaman'); ?>" class="btn btn-outline-primary btn-md">Add New Pengalaman</a>
+                <?php endif ?>
             </div>
 
         </div>
@@ -66,12 +69,18 @@
                                 </td>
                                 <td><?= $penga['alasan_berhenti']; ?></td>
                                 <td>
+                                <?php if(access_jabatan("access_update",17)): ?>
+
 									<?php if($penga['status'] == 'review') { ?>
 										<a href="<?= base_url(); ?>pengalaman/approved/<?= $penga['id_pengalaman']; ?>" class="btn btn-outline-success btn-sm my-2" onclick="return confirm('yakin?');">Approved</a>
 										<a href="<?= base_url(); ?>pengalaman/rejected/<?= $penga['id_pengalaman']; ?>" class="btn btn-outline-danger btn-sm my-2" onclick="return confirm('yakin?');">Rejected</a>
 									<?php } ?>
                                     <a href="<?= base_url(); ?>pengalaman/detailpengalaman/<?= $penga['id_pengalaman']; ?>" class="btn btn-outline-info btn-sm my-2">Detail</a>
+                                <?php endif ?>
+                                <?php if(access_jabatan("access_delete",17)): ?>
+
                                     <a href="<?= base_url(); ?>pengalaman/hapuspengalaman/<?= $penga['id_pengalaman']; ?>" class="btn btn-outline-danger btn-sm my-2" onclick="return confirm('yakin?');">Delete</a>
+                                <?php endif ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

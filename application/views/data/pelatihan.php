@@ -11,7 +11,10 @@
         <div class="card-header py-3">
             <div class="d-flex">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2"><?= $title; ?></h6>
+                <?php if(access_jabatan("access_create",17)): ?>
+
                 <a href="<?= base_url('pelatihan/addPelatihan'); ?>" class="btn btn-outline-primary btn-md">Add New Pelatihan</a>
+                <?php endif ?>
             </div>
 
         </div>
@@ -68,7 +71,10 @@
                                 </td>
                                 <td>
                                     <a href="<?= base_url(); ?>pelatihan/detailpelatihan/<?= $pel['id_pelatihan']; ?>" class="btn btn-outline-info btn-sm my-2">Detail</a>
+                <?php if(access_jabatan("access_delete",17)): ?>
+
                                     <a href="<?= base_url(); ?>pelatihan/hapuspelatihan/<?= $pel['id_pelatihan']; ?>" class="btn btn-outline-danger btn-sm my-2" onclick="return confirm('yakin?');">Delete</a>
+                <?php endif ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

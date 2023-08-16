@@ -13,7 +13,9 @@
         <div class="card-header">
             <div class="d-flex col-sm">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2">Data Pegawai</h6>
-                <a href="<?= base_url(); ?>pegawai/editpegawai/<?= $pegawai['id']; ?>" class="btn btn-outline-primary btn-md"><i class="fas fa-fw fa-user-edit"></i> Edit Pegawai</a>
+                <?php if(access_jabatan("access_update",17)): ?>
+                    <a href="<?= base_url(); ?>pegawai/editpegawai/<?= $pegawai['id']; ?>" class="btn btn-outline-primary btn-md"><i class="fas fa-fw fa-user-edit"></i> Edit Pegawai</a>
+                <?php endif ?>
             </div>
         </div>
         <div class="card-body">
