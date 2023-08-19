@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2023 at 04:33 AM
+-- Generation Time: Aug 19, 2023 at 05:51 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -175,6 +175,21 @@ CREATE TABLE `data_pengalaman` (
 INSERT INTO `data_pengalaman` (`id_pengalaman`, `user_id`, `nama_perusahaan`, `jabatan`, `tgl_mulai`, `tgl_berakhir`, `status`, `alasan_berhenti`) VALUES
 (1, 1, 'PT.ABC', 'UI/UX Design', '2021-11-01', '2022-11-01', 'approved', 'kontrak habis'),
 (7, 1, 'ITBIS Digital', 'Front End Developer', '2022-01-04', '2023-05-05', 'approved', 'Mencoba tantangan baru');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_pinjaman`
+--
+
+CREATE TABLE `data_pinjaman` (
+  `id_pinjaman` int(11) NOT NULL,
+  `nik_karyawan` varchar(20) NOT NULL,
+  `pinjaman` varchar(20) NOT NULL,
+  `alasan` text NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `tgl_pinjam` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -414,7 +429,8 @@ CREATE TABLE `t_gaji_tendik` (
   `gaji_pokok` decimal(11,2) NOT NULL,
   `t_jabatan_fungsional` decimal(11,2) NOT NULL,
   `t_pendidikan_s3` decimal(11,2) NOT NULL,
-  `transport_makan` decimal(11,2) NOT NULL,
+  `tunjangan_kehadiran` decimal(11,2) NOT NULL,
+  `tunjangan_makan` varchar(20) NOT NULL,
   `t_jabatan_struktural` decimal(11,2) NOT NULL,
   `t_jabatan_rangkap` decimal(11,2) NOT NULL,
   `bpjs_yayasan_ketnaker` decimal(3,2) NOT NULL,
@@ -430,10 +446,10 @@ CREATE TABLE `t_gaji_tendik` (
 -- Dumping data for table `t_gaji_tendik`
 --
 
-INSERT INTO `t_gaji_tendik` (`id_golongan`, `golongan`, `gaji_pokok`, `t_jabatan_fungsional`, `t_pendidikan_s3`, `transport_makan`, `t_jabatan_struktural`, `t_jabatan_rangkap`, `bpjs_yayasan_ketnaker`, `bpjs_yayasan_kesehatan`, `bpjs_pribadi_ketnaker`, `bpjs_pribadi_kesehatan`, `transisi`, `pph`, `periode`) VALUES
-(1, 'Golongan 1', '4500000.00', '500000.00', '500000.00', '500000.00', '0.00', '0.00', '6.40', '5.00', '1.40', '1.00', '0.00', '20', '2023-06-18'),
-(2, 'Golongan 2', '2400000.00', '500000.00', '0.00', '0.00', '0.00', '0.00', '6.40', '4.00', '1.40', '1.00', '0.00', '20', '2023-06-28'),
-(3, 'Golongan 3', '3000000.00', '500000.00', '500000.00', '700000.00', '0.00', '500000.00', '4.50', '3.00', '0.00', '0.00', '0.00', '20', '2023-08-16');
+INSERT INTO `t_gaji_tendik` (`id_golongan`, `golongan`, `gaji_pokok`, `t_jabatan_fungsional`, `t_pendidikan_s3`, `tunjangan_kehadiran`, `tunjangan_makan`, `t_jabatan_struktural`, `t_jabatan_rangkap`, `bpjs_yayasan_ketnaker`, `bpjs_yayasan_kesehatan`, `bpjs_pribadi_ketnaker`, `bpjs_pribadi_kesehatan`, `transisi`, `pph`, `periode`) VALUES
+(1, 'Golongan 1', '4500000.00', '500000.00', '500000.00', '500000.00', '200000', '0.00', '0.00', '6.40', '5.00', '1.40', '1.00', '0.00', '20', '2023-06-18'),
+(2, 'Golongan 2', '2400000.00', '500000.00', '0.00', '0.00', '200000', '0.00', '0.00', '6.40', '4.00', '1.40', '1.00', '0.00', '20', '2023-06-28'),
+(3, 'Golongan 3', '3000000.00', '500000.00', '500000.00', '700000.00', '200000', '0.00', '500000.00', '4.50', '3.00', '0.00', '0.00', '0.00', '20', '2023-08-16');
 
 -- --------------------------------------------------------
 
@@ -650,7 +666,8 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (43, 24, 'Staf', 'payroll/staf', '-', 1),
 (44, 24, 'Dosen', 'payroll/dosen', '-', 1),
 (45, 24, 'Dosen Homebase', 'payroll/homebase', '-', 1),
-(46, 25, 'Slip Gaji user', 'data/alluser', '-', 1);
+(46, 25, 'Slip Gaji user', 'data/alluser', '-', 1),
+(48, 7, 'Data Pinjaman', 'pinjaman', 'fas fa-fw fa-envelope-open-text', 1);
 
 -- --------------------------------------------------------
 
@@ -692,6 +709,12 @@ ALTER TABLE `data_pelatihan`
 --
 ALTER TABLE `data_pengalaman`
   ADD PRIMARY KEY (`id_pengalaman`);
+
+--
+-- Indexes for table `data_pinjaman`
+--
+ALTER TABLE `data_pinjaman`
+  ADD PRIMARY KEY (`id_pinjaman`);
 
 --
 -- Indexes for table `master_hukuman`
@@ -824,6 +847,12 @@ ALTER TABLE `data_pengalaman`
   MODIFY `id_pengalaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `data_pinjaman`
+--
+ALTER TABLE `data_pinjaman`
+  MODIFY `id_pinjaman` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `master_hukuman`
 --
 ALTER TABLE `master_hukuman`
@@ -917,7 +946,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `user_token`
