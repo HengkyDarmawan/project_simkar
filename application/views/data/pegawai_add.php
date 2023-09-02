@@ -128,8 +128,14 @@
                         <?= form_error('jabatan_id', '<small class="text-danger pl-3">', '</small>'); ?>
                     </select> -->
                         <?php foreach ($jabatan as $jab) : ?>
-                            <br><input type="checkbox"  name="jabatan_id[]" value="<?= $jab['id_jabatan']; ?>">
-                            <?= $jab['jabatan']; ?>
+                            <br>
+                            <input type="checkbox" data-jabatan="<?= $jab['jabatan']; ?>" data-id="<?= $jab['id_jabatan']; ?>" name="jabatan_id[]" value="<?= $jab['id_jabatan']; ?>"><?= $jab['jabatan']; ?>
+                            <select class="form-control d-none" name="id_golongan[]" id="golongan-<?= $jab['id_jabatan']; ?>">
+                                <option>Pilih Golongan Gaji</option>
+                                <?php foreach ($gaji as $val_gaji) : ?>
+                                    <option value="<?= $val_gaji['id_golongan'] ?>"><?= $val_gaji['golongan'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         <?php endforeach; ?>
                 </div>
                 <div class="form-group">

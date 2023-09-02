@@ -18,6 +18,7 @@
 
         </div>
         <div class="card-body">
+            <a href="<?= base_url('absensi/detailBulan/'.$this->uri->segment('3')) ?>" class="btn btn-primary mb-4">Kembali</a>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead class="text-center">
@@ -41,22 +42,16 @@
                         </tr>
                     </tfoot>
                     <tbody class="text-center">
-                        <tr>
-                            <td>1</td>
-                            <td>24 Desember 2022</td>
-                            <td>1234</td>
-                            <td>Athiyyah Nadiya</td>
-                            <td>08.02</td>
-                            <td>14.00</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>23 Desember 2022</td>
-                            <td>1234</td>
-                            <td>Athiyyah Nadiya</td>
-                            <td>08.00</td>
-                            <td>16.05</td>
-                        </tr>
+                        <?php foreach ($absensi as $key => $value): ?>
+                            <tr>
+                                <td><?= $key+1 ?></td>
+                                <td><?= $value['tanggal'] ?></td>
+                                <td><?= $value['nik_ktp'] ?></td>
+                                <td><?= $value['name'] ?></td>
+                                <td><?= $value['jam_masuk'] ?></td>
+                                <td><?= $value['jam_pulang'] ?></td>
+                            </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>

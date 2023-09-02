@@ -41,6 +41,7 @@
 
         </div>
         <div class="card-body">
+            <a href="<?= base_url('absensi') ?>" class="btn btn-primary mb-4">Kembali</a>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead class="text-center">
@@ -49,6 +50,7 @@
                             <th>Periode Absen</th>
                             <th>NIK Pegawai</th>
                             <th>Nama</th>
+                            <th>Masuk</th>
                             <th>Izin</th>
                             <th>Alpa</th>
                             <th>Total Absen</th>
@@ -61,6 +63,7 @@
                             <th>Periode Absen</th>
                             <th>NIK Pegawai</th>
                             <th>Nama</th>
+                            <th>Masuk</th>
                             <th>Izin</th>
                             <th>Alpa</th>
                             <th>Total Absen</th>
@@ -68,30 +71,21 @@
                         </tr>
                     </tfoot>
                     <tbody class="text-center">
-                        <tr>
-                            <td>1</td>
-                            <td>Desember 2022</td>
-                            <td>1234</td>
-                            <td>Athiyyah Nadiya</td>
-                            <td>2</td>
-                            <td>1</td>
-                            <td>20</td>
-                            <td>
-                                <a href="<?= base_url(); ?>absensi/detailHari" class="btn btn-outline-info btn-sm">detail</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Novembar 2022</td>
-                            <td>1234</td>
-                            <td>Athiyyah Nadiya</td>
-                            <td>1</td>
-                            <td>0</td>
-                            <td>20</td>
-                            <td>
-                                <a href="<?= base_url(); ?>absensi/detailHari" class="btn btn-outline-info btn-sm">detail</a>
-                            </td>
-                        </tr>
+                        <?php foreach ($absensi as $key => $value): ?>
+                            <tr>
+                                <td><?= $key+1 ?></td>
+                                <td><?= date("F",strtotime('2022-'.$value['month'].'-01')) ?></td>
+                                <td><?= $value['nik_ktp'] ?></td>
+                                <td><?= $value['name'] ?></td>
+                                <td><?= $value['count_masuk'] ?></td>
+                                <td><?= $value['count_izin'] ?></td>
+                                <td><?= $value['count_alpha'] ?></td>
+                                <td><?= $value['count'] ?></td>
+                                <td>
+                                    <a href="<?= base_url(); ?>absensi/detailHari/<?= $value['id_user'].'/'.$value['month'] ?>" class="btn btn-outline-info btn-sm">detail</a>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>

@@ -318,6 +318,18 @@
             }
         })
     })
+
+    $('[name="jabatan_id[]"]').on('change', function() {
+        const jabatan = $(this).data('jabatan');
+        const id_jabatan = $(this).data('id');
+
+        if($(this).is(':checked')){
+            $("#golongan-"+id_jabatan).removeClass('d-none')
+        }else{
+            $("#golongan-"+id_jabatan).addClass('d-none')
+        }
+
+    })
 </script>
 <!-- Page level plugins -->
 

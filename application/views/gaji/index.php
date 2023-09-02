@@ -45,7 +45,7 @@
                         </tr>
                     </tfoot>
                     <tbody class="text-center">
-                        <?= $i=1;?>
+                        <?php $i=1;?>
                         <?php foreach ($gaji as $g) : ?>
                         <?php $gaji_kotor = $g['gaji_pokok'] + $g['t_jabatan_fungsional'] + $g['t_pendidikan_s3'] + $g['tunjangan_kehadiran'] + $g['tunjangan_makan'] + $g['t_jabatan_struktural'] + $g['t_jabatan_rangkap']?>
                         <?php $bpjs_fasilitas = ($gaji_kotor * $g['bpjs_yayasan_ketnaker']) / 100 + ($gaji_kotor * $g['bpjs_yayasan_kesehatan']) / 100?>
