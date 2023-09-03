@@ -71,6 +71,7 @@
                         </tr>
                     </tfoot>
                     <tbody class="text-center">
+
                         <?php foreach ($absensi as $key => $value): ?>
                             <tr>
                                 <td><?= $key+1 ?></td>
@@ -80,7 +81,7 @@
                                 <td><?= $value['count_masuk'] ?></td>
                                 <td><?= $value['count_izin'] ?></td>
                                 <td><?= $value['count_alpha'] ?></td>
-                                <td><?= $value['count'] ?></td>
+                                <td><?= $value['count'] - $value['count_alpha'] ?></td>
                                 <td>
                                     <a href="<?= base_url(); ?>absensi/detailHari/<?= $value['id_user'].'/'.$value['month'] ?>" class="btn btn-outline-info btn-sm">detail</a>
                                 </td>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2023 at 05:51 PM
+-- Generation Time: Sep 03, 2023 at 10:17 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -20,6 +20,52 @@ SET time_zone = "+00:00";
 --
 -- Database: `project_simkar`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `absensi`
+--
+
+CREATE TABLE `absensi` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `status` enum('masuk','izin','alpha') NOT NULL DEFAULT 'masuk',
+  `jam_masuk` time NOT NULL,
+  `jam_pulang` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `absensi`
+--
+
+INSERT INTO `absensi` (`id`, `id_user`, `tanggal`, `status`, `jam_masuk`, `jam_pulang`) VALUES
+(1, 1, '2023-08-22', 'izin', '01:00:00', '02:20:05'),
+(2, 69, '2023-08-23', 'masuk', '00:00:00', '00:00:00'),
+(3, 70, '2023-08-24', 'masuk', '00:00:00', '00:00:00'),
+(4, 71, '2023-08-25', 'masuk', '00:00:00', '00:00:00'),
+(5, 1, '2023-08-22', 'masuk', '00:00:00', '00:00:00'),
+(6, 69, '2023-08-23', 'masuk', '00:00:00', '00:00:00'),
+(7, 70, '2023-08-24', 'masuk', '00:00:00', '00:00:00'),
+(8, 71, '2023-08-25', 'masuk', '00:00:00', '00:00:00'),
+(9, 1, '2023-07-22', 'masuk', '00:00:00', '00:00:00'),
+(10, 69, '2023-07-23', 'masuk', '00:00:00', '00:00:00'),
+(11, 71, '2023-07-24', 'masuk', '00:00:00', '00:00:00'),
+(12, 71, '2023-07-25', 'masuk', '00:00:00', '00:00:00'),
+(13, 71, '2023-07-22', 'masuk', '00:00:00', '00:00:00'),
+(14, 69, '2023-07-23', 'masuk', '00:00:00', '00:00:00'),
+(15, 70, '2023-07-24', 'masuk', '00:00:00', '00:00:00'),
+(16, 70, '2023-07-25', 'masuk', '00:00:00', '00:00:00'),
+(26, 1, '2023-06-06', 'masuk', '08:00:00', '16:00:00'),
+(27, 1, '2023-06-07', 'masuk', '08:00:00', '16:00:00'),
+(28, 1, '2023-06-08', 'masuk', '08:00:00', '16:00:00'),
+(29, 1, '2023-06-09', 'masuk', '08:00:00', '16:00:00'),
+(30, 1, '2023-06-10', 'alpha', '09:00:00', '17:00:00'),
+(31, 1, '2023-06-11', 'masuk', '10:00:00', '18:00:00'),
+(32, 1, '2023-06-12', 'masuk', '11:00:00', '19:00:00'),
+(33, 1, '2023-06-06', 'masuk', '12:00:00', '20:00:00'),
+(34, 1, '2023-06-07', 'masuk', '13:00:00', '21:00:00');
 
 -- --------------------------------------------------------
 
@@ -294,7 +340,7 @@ INSERT INTO `master_libur` (`id_libur`, `tgl_mulai`, `tgl_akhir`, `keterangan`) 
 --
 
 CREATE TABLE `master_parent_jabatan` (
-  `id` int(11) NOT NULL,
+  `id_parent_jabatan` int(11) NOT NULL,
   `parent_jabatan` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -302,7 +348,7 @@ CREATE TABLE `master_parent_jabatan` (
 -- Dumping data for table `master_parent_jabatan`
 --
 
-INSERT INTO `master_parent_jabatan` (`id`, `parent_jabatan`) VALUES
+INSERT INTO `master_parent_jabatan` (`id_parent_jabatan`, `parent_jabatan`) VALUES
 (7, 'Rektor'),
 (8, 'WR1'),
 (9, 'WR2'),
@@ -494,7 +540,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `jabatan_id`, `address`, `tmpt_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `status_pernikahan`, `nik_ktp`, `nik_karyawan`, `nama_bank`, `no_rek`, `npwp`, `email`, `email_undira`, `telp`, `nama_darurat`, `telp_darurat`, `no_bpjs_kesehatan`, `no_bpjs_ketenagakerjaan`, `jenis_pegawai`, `image`, `password`, `role_id`, `is_active`, `tgl_bergabung`, `created_at`, `approval`) VALUES
-(1, 'Hengky Darmawans', 1, 'Jakarta Barat, Indonesia', 'Pontianak', '2001-02-22', 'Pria', 'Buddha', 'Singel', '3174092505520003', '1100000000011', 'BCA', '1234567891123', '12.345.678.9-101.012', 'hengky@gmail.com', 'hengkydarmawan66@gmail.com', '082186629996', 'Ani', '082196629997', '12345671111', '123456789', 'tendik', 'default.png', '$2y$10$N5bHf8.9YGi9IZjg0i2qCOePlknbmuhr7GHzATV3v4bsIpsUDm7KW', 1, 1, '2022-12-13', '2021-11-02', 'approved'),
+(1, 'Hengky Darmawans', 1, 'Jakarta Barat, Indonesia', 'Pontianak', '2001-02-22', 'Pria', 'Buddha', 'Singel', '3174092505520003', '1100000000011', 'BCA', '1234567891123', '12.345.678.9-101.012', 'hengky@gmail.com', 'hengkydarmawan66@gmail.com', '082186629996', 'Ani', '082196629997', '12345671111', '123456789', 'tendik', 'default.png', '$2y$10$SIIfMeR3h3is4g6bVxsw7ucmSEuhbF33VhEMfvuKydMOf2IWWtCLW', 1, 1, '2022-12-13', '2021-11-02', 'approved'),
 (69, 'Hengky Admin', 2, 'Jakarta', 'Paris', '2023-06-01', 'Perempuan', 'Hindu', 'belum menikah', '6101042202010002', '1100000000012', 'BCA', '1221444111', '12.345.678.9-101.017', 'hengkycross172@gmail.com', 'hengkycross172@gmail.com', '089659172256', 'Eko', '085117522255', '123456722', '123456733', 'karyawan', 'default.png', '$2y$10$y/aZYpUB1Z9W6QJlW3X5LurHVRERiWnmsE2nlmvEucyVY/ernoD7G', 2, 1, '2023-06-02', NULL, 'approved'),
 (70, 'Hengky Staf', 8, 'jakarta', 'Jepang', '2023-06-01', 'Perempuan', 'Buddha', 'nikah', '61516444413211', '6151644', 'BCA', '615564641', '12.345.678.9-101.014', 'hengkydarmawan52@gmail.com', 'hengkydarmawan52@gmail.com', '0858815141', 'ada', '0812116163', '123456724', '123456724', 'karyawan', 'default.png', '$2y$10$MbMeJkJH47kWj0nFgpTeeOHKAZZ4FF7q4opokbgHtz1J5f6Rdh8au', 3, 1, '2023-06-22', NULL, 'review'),
 (71, 'Riko (SP)', 1, 'Bandung', 'Bandung', '1999-04-07', 'pria', 'Islam', 'belum menikah', '6101042202010002', '6101042202010002', 'BCA', '1221444111', '12.345.678.9-101.020', 'rikorinaldiansyah26@gmail.com', 'rikorinaldiansyah26@gmail.com', '089659115555', 'tes', '085117522254', '123456722', '1234567', 'Tendik', 'default.png', '$2y$10$XRV9Hx3Y.uhQdpsocTpsgOzlZnqEsbngDkQxcX34D1bHIXKW/Ee6i', 1, 1, '2023-06-05', NULL, 'approved');
@@ -550,24 +596,35 @@ CREATE TABLE `user_jabatan` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `jabatan_id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL
+  `role_id` int(11) NOT NULL,
+  `golongan_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user_jabatan`
 --
 
-INSERT INTO `user_jabatan` (`id`, `user_id`, `jabatan_id`, `role_id`) VALUES
-(1, 7, 3, 1),
-(2, 7, 5, 3),
-(3, 68, 7, 3),
-(4, 68, 9, 3),
-(7, 1, 1, 1),
-(8, 1, 7, 3),
-(20, 71, 1, 1),
-(23, 69, 2, 1),
-(24, 70, 8, 2),
-(25, 70, 1, 1);
+INSERT INTO `user_jabatan` (`id`, `user_id`, `jabatan_id`, `role_id`, `golongan_id`) VALUES
+(1, 7, 3, 1, 1),
+(2, 7, 5, 3, 1),
+(3, 68, 7, 3, 1),
+(4, 68, 9, 3, 1),
+(7, 1, 1, 1, 1),
+(8, 1, 7, 3, 1),
+(20, 71, 1, 1, 1),
+(23, 69, 2, 1, 1),
+(24, 70, 8, 2, 1),
+(25, 70, 1, 1, 1),
+(26, 74, 1, 1, 1),
+(27, 74, 5, 3, 1),
+(28, 74, 8, 2, 1),
+(29, 74, 11, 3, 1),
+(30, 74, 16, 3, 3),
+(31, 75, 1, 1, 2),
+(32, 75, 4, 3, 2),
+(33, 75, 8, 2, 3),
+(34, 75, 9, 3, 3),
+(35, 75, 16, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -667,7 +724,8 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (44, 24, 'Dosen', 'payroll/dosen', '-', 1),
 (45, 24, 'Dosen Homebase', 'payroll/homebase', '-', 1),
 (46, 25, 'Slip Gaji user', 'data/alluser', '-', 1),
-(48, 7, 'Data Pinjaman', 'pinjaman', 'fas fa-fw fa-envelope-open-text', 1);
+(48, 7, 'Data Pinjaman', 'pinjaman', 'fas fa-fw fa-envelope-open-text', 1),
+(49, 7, 'Pembiayaan Tri dharma', 'tridhrma', '-', 1);
 
 -- --------------------------------------------------------
 
@@ -685,6 +743,12 @@ CREATE TABLE `user_token` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `absensi`
+--
+ALTER TABLE `absensi`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `access_jabatan`
@@ -744,7 +808,7 @@ ALTER TABLE `master_libur`
 -- Indexes for table `master_parent_jabatan`
 --
 ALTER TABLE `master_parent_jabatan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_parent_jabatan`);
 
 --
 -- Indexes for table `master_pendidikan`
@@ -823,6 +887,12 @@ ALTER TABLE `user_token`
 --
 
 --
+-- AUTO_INCREMENT for table `absensi`
+--
+ALTER TABLE `absensi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
 -- AUTO_INCREMENT for table `access_jabatan`
 --
 ALTER TABLE `access_jabatan`
@@ -880,7 +950,7 @@ ALTER TABLE `master_libur`
 -- AUTO_INCREMENT for table `master_parent_jabatan`
 --
 ALTER TABLE `master_parent_jabatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_parent_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `master_pendidikan`
@@ -928,7 +998,7 @@ ALTER TABLE `user_access_menu`
 -- AUTO_INCREMENT for table `user_jabatan`
 --
 ALTER TABLE `user_jabatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
@@ -946,13 +1016,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
