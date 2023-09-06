@@ -125,6 +125,10 @@ class Pegawai extends CI_Controller
         $data['pelatihan'] = $this->m_user->getPelatihanById($id);
         $data['seminar'] = $this->m_user->getSeminarById($id);
         // var_dump($data['keluarga']);
+        $data['jabatan'] = $this->m_jabatan->getAllJabatan();
+    	$data['user_jabatan'] = $this->db->query("SELECT * from user_jabatan where user_id = ".$id)->result_array();
+        $data['gaji'] = $this->db->get('t_gaji_tendik')->result_array();
+
 
         $this->load->view('template/header', $data);
         $this->load->view('data/pegawai_detail', $data);
@@ -141,15 +145,61 @@ class Pegawai extends CI_Controller
         $data['jabatan'] = $this->m_jabatan->getAllJabatan();
         $data['role'] = $this->m_admin->getRole();
         $data['pegawai'] = $this->m_user->getPegawaiByID($id);
+        $data['gaji'] = $this->db->get('t_gaji_tendik')->result_array();
 
         if (!$this->input->post()) {
-        	$data['user_jabatan'] = $this->db->query("SELECT * from user_jabatan where user_id = ".$this->session->userdata('user_id'))->result_array();
+        	$data['user_jabatan'] = $this->db->query("SELECT * from user_jabatan where user_id = ".$id)->result_array();
 
             $this->load->view('template/header', $data);
             $this->load->view('data/pegawai_edit', $data);
             $this->load->view('template/footer');
         } else {
-            $this->m_user->editPegawai();
+        	$id_golongan = $this->input->post('id_golongan');
+        	foreach ($id_golongan as $key => $value) {
+        		if($value == 'Pilih Golongan Gaji'){
+        			unset($id_golongan[$key]);
+        		}
+        	}
+
+    		$id_golongan_new = [];
+        	foreach ($id_golongan as $key => $value) {
+        		$id_golongan_new[] = $value;
+        	}
+
+	        $data_pegawai = [
+	            "id" => $this->input->post('id', true),
+	            "name" => $this->input->post('name', true),
+	            "jabatan_id" => $this->input->post('jabatan_id')[0],
+	            "address" => $this->input->post('address', true),
+	            "tmpt_lahir" => $this->input->post('tmpt_lahir', true),
+	            "tgl_lahir" => $this->input->post('tgl_lahir', true),
+	            "jenis_kelamin" => $this->input->post('jenis_kelamin', true),
+	            "agama" => $this->input->post('agama', true),
+	            "status_pernikahan" => $this->input->post('status_pernikahan', true),
+	            "nik_ktp" => $this->input->post('nik_ktp', true),
+	            "nik_karyawan" => $this->input->post('nik_karyawan', true),
+	            "nama_bank" => $this->input->post('nama_bank', true),
+	            "no_rek" => $this->input->post('no_rek', true),
+	            "npwp" => $this->input->post('npwp', true),
+	            "email" => $this->input->post('email', true),
+	            "email_undira" => $this->input->post('email_undira', true),
+	            "telp" => $this->input->post('telp', true),
+	            "nama_darurat" => $this->input->post('nama_darurat', true),
+	            "telp_darurat" => $this->input->post('telp_darurat', true),
+	            "no_bpjs_kesehatan" => $this->input->post('no_bpjs_kesehatan', true),
+	            "no_bpjs_ketenagakerjaan" => $this->input->post('no_bpjs_ketenagakerjaan', true),
+	            "image" => "default.png",
+	            "password" => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+	            "role_id" => $this->input->post('role_id', true),
+	            "is_active" => $this->input->post('is_active', true),
+	            "tgl_bergabung" => $this->input->post('tgl_bergabung', true),
+	            "approval" => $this->input->post('approval', true),
+	        ];
+	        $data_lain = [
+	            "id_golongan" => $id_golongan_new,
+	            "jabatan" => $this->input->post('jabatan_id')
+	        ];
+            $this->m_user->editPegawai($data_pegawai,$data_lain);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pegawai Di Edit !!!</div>');
             redirect('pegawai');
         }

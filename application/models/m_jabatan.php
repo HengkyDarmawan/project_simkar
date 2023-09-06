@@ -6,7 +6,6 @@ class M_jabatan extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('master_jabatan');
-        $this->db->join('master_parent_jabatan', 'master_jabatan.parent_jabatan_id = master_parent_jabatan.id_parent_jabatan', 'left');
         return $this->db->get()->result_array();
     }
 

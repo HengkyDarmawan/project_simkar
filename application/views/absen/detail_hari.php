@@ -25,7 +25,7 @@
                         <tr>
                             <th>#</th>
                             <th>Tanggal </th>
-                            <th>NIK</th>
+                            <th>NIP</th>
                             <th>Nama</th>
                             <th>jam masuk</th>
                             <th>jam pulang</th>
@@ -35,7 +35,7 @@
                         <tr>
                             <th>#</th>
                             <th>Tanggal</th>
-                            <th>NIK</th>
+                            <th>NIP</th>
                             <th>Nama</th>
                             <th>jam masuk</th>
                             <th>jam pulang</th>
@@ -46,7 +46,7 @@
                             <tr>
                                 <td><?= $key+1 ?></td>
                                 <td><?= $value['tanggal'] ?></td>
-                                <td><?= $value['nik_ktp'] ?></td>
+                                <td><?= $value['nik_karyawan'] ?></td>
                                 <td><?= $value['name'] ?></td>
                                 <td><?= $value['jam_masuk'] ?></td>
                                 <td><?= $value['jam_pulang'] ?></td>

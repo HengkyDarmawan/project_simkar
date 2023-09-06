@@ -56,8 +56,35 @@
             <hr>
             <div class="row mb-3">
                 <div class="col-md-6 bold">Jabatan</div>
-                <div class="col-md-6">
-                    <span class="badge badge-pill badge-primary"><?= $pegawai['jabatan']; ?></span>
+                <div class="col-md-6 font-weight-bold">
+                    <?php  
+                        $same = false;
+                        $no = 0;
+                        foreach ($jabatan as $jab) : 
+                            $golongan = 0;
+                            foreach ($user_jabatan as $jab2) :         
+                                $same = false;
+                                if($jab['id_jabatan'] == $jab2['jabatan_id']){
+                                $golongan = $jab2['golongan_id'];
+                                    $same = true;
+                                    break;
+                                }
+                            endforeach; 
+                    ?>
+                        <!-- <option value="<?= $jab['id_jabatan']; ?>" <?= $same ? "selected" : "" ?>><?= $jab['jabatan']; ?></option> -->
+                        <?php foreach ($gaji as $val_gaji) : ?>
+                            <?php if ($golongan == $val_gaji['id_golongan']): 
+                                $no += 1;
+                            ?> 
+                            <?= ($no != 1) ? '<hr>' : '' ?> 
+                            <?= $jab['jabatan']; ?>
+                            <br>
+                            Golongan Gaji : <?=$val_gaji['golongan']?>
+                            
+                            <?php endif ?>
+                        <?php endforeach; ?>
+                    <?php endforeach; ?>
+
                 </div>
             </div>
             <hr>

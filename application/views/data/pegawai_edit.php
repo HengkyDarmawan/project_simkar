@@ -125,19 +125,28 @@
                         <?php  
                             $same = false;
                         ?>
-                        <?php foreach ($jabatan as $jab) : ?>
+                        <?php foreach ($jabatan as $jab) : 
+                            $golongan = 0;
+                            ?>
                             <?php foreach ($user_jabatan as $jab2) : ?>
-                                <?php  
+                                <?php                                  
                                     $same = false;
                                     if($jab['id_jabatan'] == $jab2['jabatan_id']){
+                                    $golongan = $jab2['golongan_id'];
                                         $same = true;
                                         break;
                                     }
                                 ?>
                             <?php endforeach; ?>
                             <!-- <option value="<?= $jab['id_jabatan']; ?>" <?= $same ? "selected" : "" ?>><?= $jab['jabatan']; ?></option> -->
-                            <br><input type="checkbox"  name="jabatan_id[]" value="<?= $jab['id_jabatan']; ?>"<?= $same ? "checked" : "" ?>>
+                            <br><input type="checkbox" data-jabatan="<?= $jab['jabatan']; ?>" data-id="<?= $jab['id_jabatan']; ?>" name="jabatan_id[]" value="<?= $jab['id_jabatan']; ?>"<?= $same ? "checked" : "" ?>>
                             <?= $jab['jabatan']; ?>
+                            <select class="form-control <?= $golongan == 0 ? 'd-none' : '' ?>" name="id_golongan[]" id="golongan-<?= $jab['id_jabatan']; ?>">
+                                <option>Pilih Golongan Gaji</option>
+                                <?php foreach ($gaji as $val_gaji) : ?>
+                                    <option <?= $golongan == $val_gaji['id_golongan'] ? 'selected' : '' ?> value="<?= $val_gaji['id_golongan'] ?>"><?= $val_gaji['golongan'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         <?php endforeach; ?>
 
                 </div>

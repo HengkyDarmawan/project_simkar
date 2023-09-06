@@ -42,7 +42,7 @@
                     <thead class="text-center">
                         <tr>
                             <th>#</th>
-                            <th>NIK Pegawai</th>
+                            <th>NIP</th>
                             <th>Nama</th>
                             <th>Jumlah Absen</th>
                             <th>Action</th>
@@ -51,7 +51,7 @@
                     <tfoot class="text-center">
                         <tr>
                             <th>#</th>
-                            <th>NIK Pegawai</th>
+                            <th>NIP</th>
                             <th>Nama</th>
                             <th>Jumlah Absen</th>
                             <th>Action</th>
@@ -61,7 +61,7 @@
                         <?php foreach ($absensi as $key => $value): ?>
                             <tr>
                                 <td><?= $key+1 ?></td>
-                                <td><?= $value['nik_ktp'] ?></td>
+                                <td><?= $value['nik_karyawan'] ?></td>
                                 <td><?= $value['name'] ?></td>
                                 <td><?= $value['count'] ?></td>
                                 <td>
