@@ -12,7 +12,6 @@
             <div class="d-flex">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2"><?= $title; ?></h6>
             </div>
-
         </div>
         <div class="card-body">
             <div class="table-responsive">

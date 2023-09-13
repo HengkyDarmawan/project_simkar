@@ -84,7 +84,6 @@
                             <?php endif ?>
                         <?php endforeach; ?>
                     <?php endforeach; ?>
-
                 </div>
             </div>
             <hr>

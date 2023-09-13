@@ -12,6 +12,7 @@
         <div class="card-header py-3">
             <div class="d-flex">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2"><?= $title; ?></h6>
+                <a href="<?= base_url('pengajuan/addPinjaman'); ?>" class="btn btn-outline-primary btn-md">Ajukan Pinjaman</a>
             </div>
         </div>
         <div class="card-body">
@@ -65,10 +66,11 @@
                             </td>
                             <td><?= $p['alasan']; ?></td>
                             <td>
-                                <?php if($p['status_pengajuan'] == "1") { ?>
-                                    <a href="<?= base_url(); ?>pinjaman/approved/<?= $p['id_pinjaman']; ?>" onclick="return confirm('yakin?');" class="btn btn-outline-success btn-sm my-2">Approved</a>
-                                    <a href="<?= base_url(); ?>pinjaman/rejected/<?= $p['id_pinjaman']; ?>" onclick="return confirm('yakin?');" class="btn btn-outline-danger btn-sm my-2">Rejected</a>
-                                <?php } ?>
+                              <?php if($p['status_pengajuan'] == '2') {?>
+                                <a href="<?= base_url(); ?>pengajuan/detailpinjaman/<?= $p['id_pinjaman']; ?>" class="btn btn-outline-info btn-sm">detail</a>
+                              <?php } elseif($p['status_pengajuan'] == '1' || $p['status_pengajuan'] == '3') {?>
+                                
+                              <?php }?>
                             </td>
                         </tr>
                         <?php endforeach; ?>

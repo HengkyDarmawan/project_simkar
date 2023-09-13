@@ -12,6 +12,7 @@
         <div class="card-header py-3">
             <div class="d-flex">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2"><?= $title; ?></h6>
+                <a href="<?= base_url('pengajuan/addAbsen'); ?>" class="btn btn-outline-primary btn-md">Ajukan Izin</a>
             </div>
         </div>
         <div class="card-body">
@@ -23,11 +24,10 @@
                             <th>Tanggal Pengajuan</th>
                             <th>NIP</th>
                             <th>Nama Karyawan</th>
-                            <th>Total Pinjaman</th>
-                            <th>Tenor (bulan)</th>
+                            <th>Keterangan</th>
+                            <th>Bukti</th>
                             <th>Status</th>
-                            <th>Alasan</th>
-                            <th>Action</th>
+                            <th>Tanggal Submit</th>
                         </tr>
                     </thead>
                     <tfoot class="text-center">
@@ -36,40 +36,35 @@
                             <th>Tanggal Pengajuan</th>
                             <th>NIP</th>
                             <th>Nama Karyawan</th>
-                            <th>Total Pinjaman</th>
-                            <th>Tenor (bulan)</th>
+                            <th>Keterangan</th>
+                            <th>Bukti</th>
                             <th>Status</th>
-                            <th>Alasan</th>
-                            <th>Action</th>
+                            <th>Tanggal Submit</th>
                         </tr>
                     </tfoot>
                     <tbody class="text-center">
                         <?php $i=1;?>
-                        <?php foreach ($pinjaman as $p) : ?>
+                        <?php foreach ($izinAbsen as $izinA) : ?>
                         <tr>
                             <td><?= $i++;?></td>
-                            <td><?= mediumdate_indo($p['tgl_pengajuan']); ?></td>
-                            <td><?= $p['nik_karyawan']; ?></td>
-                            <td><?= $p['name']; ?></td>
-                            <td>Rp.<?= number_format($p['total_pinjaman'],0,',','.');?></td>
-                            <td><?= $p['tenor']; ?></td>
+                            <td><?= mediumdate_indo($izinA['tgl_pengajuan']); ?></td>
+                            <td><?= $izinA['nik_karyawan']; ?></td>
+                            <td><?= $izinA['name']; ?></td>
+                            <td><?= $izinA['alasan']; ?></td>
+                            <td>
+                                <a href="<?= $izinA['bukti']; ?>" class="btn btn-outline-primary btn-sm" target="_blank">Link</a>
+                            </td>
                             <td>
                                 <?php
-                                if ($p['status_pengajuan'] == "1") { ?>
+                                if ($izinA['status_izin'] == "1") { ?>
                                     <span class="badge badge-pill badge-warning ">Review</span>
-                                <?php } else if ($p['status_pengajuan'] == "2") { ?>
+                                <?php } else if ($izinA['status_izin'] == "2") { ?>
                                     <span class="badge badge-pill badge-success ">approved</span>
                                 <?php } else { ?>
                                     <span class="badge badge-pill badge-danger ">rejected</span>
                                 <?php } ?>
                             </td>
-                            <td><?= $p['alasan']; ?></td>
-                            <td>
-                                <?php if($p['status_pengajuan'] == "1") { ?>
-                                    <a href="<?= base_url(); ?>pinjaman/approved/<?= $p['id_pinjaman']; ?>" onclick="return confirm('yakin?');" class="btn btn-outline-success btn-sm my-2">Approved</a>
-                                    <a href="<?= base_url(); ?>pinjaman/rejected/<?= $p['id_pinjaman']; ?>" onclick="return confirm('yakin?');" class="btn btn-outline-danger btn-sm my-2">Rejected</a>
-                                <?php } ?>
-                            </td>
+                            <td><?= mediumdate_indo($izinA['tgl_submit']); ?></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
