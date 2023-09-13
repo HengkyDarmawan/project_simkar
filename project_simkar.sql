@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2023 at 10:17 AM
+-- Generation Time: Sep 13, 2023 at 03:43 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -41,31 +41,12 @@ CREATE TABLE `absensi` (
 --
 
 INSERT INTO `absensi` (`id`, `id_user`, `tanggal`, `status`, `jam_masuk`, `jam_pulang`) VALUES
-(1, 1, '2023-08-22', 'izin', '01:00:00', '02:20:05'),
-(2, 69, '2023-08-23', 'masuk', '00:00:00', '00:00:00'),
-(3, 70, '2023-08-24', 'masuk', '00:00:00', '00:00:00'),
-(4, 71, '2023-08-25', 'masuk', '00:00:00', '00:00:00'),
-(5, 1, '2023-08-22', 'masuk', '00:00:00', '00:00:00'),
-(6, 69, '2023-08-23', 'masuk', '00:00:00', '00:00:00'),
-(7, 70, '2023-08-24', 'masuk', '00:00:00', '00:00:00'),
-(8, 71, '2023-08-25', 'masuk', '00:00:00', '00:00:00'),
-(9, 1, '2023-07-22', 'masuk', '00:00:00', '00:00:00'),
-(10, 69, '2023-07-23', 'masuk', '00:00:00', '00:00:00'),
-(11, 71, '2023-07-24', 'masuk', '00:00:00', '00:00:00'),
-(12, 71, '2023-07-25', 'masuk', '00:00:00', '00:00:00'),
-(13, 71, '2023-07-22', 'masuk', '00:00:00', '00:00:00'),
-(14, 69, '2023-07-23', 'masuk', '00:00:00', '00:00:00'),
-(15, 70, '2023-07-24', 'masuk', '00:00:00', '00:00:00'),
-(16, 70, '2023-07-25', 'masuk', '00:00:00', '00:00:00'),
-(26, 1, '2023-06-06', 'masuk', '08:00:00', '16:00:00'),
-(27, 1, '2023-06-07', 'masuk', '08:00:00', '16:00:00'),
-(28, 1, '2023-06-08', 'masuk', '08:00:00', '16:00:00'),
-(29, 1, '2023-06-09', 'masuk', '08:00:00', '16:00:00'),
-(30, 1, '2023-06-10', 'alpha', '09:00:00', '17:00:00'),
-(31, 1, '2023-06-11', 'masuk', '10:00:00', '18:00:00'),
-(32, 1, '2023-06-12', 'masuk', '11:00:00', '19:00:00'),
-(33, 1, '2023-06-06', 'masuk', '12:00:00', '20:00:00'),
-(34, 1, '2023-06-07', 'masuk', '13:00:00', '21:00:00');
+(46, 1, '2023-09-01', 'alpha', '00:00:00', '00:00:00'),
+(47, 1, '2023-09-02', 'masuk', '08:00:00', '16:00:00'),
+(48, 1, '2023-09-03', 'masuk', '08:00:00', '16:00:00'),
+(49, 1, '2023-09-04', 'masuk', '08:00:00', '16:00:00'),
+(50, 1, '2023-09-05', 'masuk', '08:00:00', '16:00:00'),
+(51, 70, '2023-06-06', 'masuk', '08:00:00', '16:00:00');
 
 -- --------------------------------------------------------
 
@@ -192,10 +173,7 @@ INSERT INTO `data_pelatihan` (`id_pelatihan`, `user_id`, `nama_pelatihan`, `orga
 (1, 1, 'Kampus Merdeka', 'Dicoding', 'Online', 'Mempelajari Mengenai javascript Fundamental', 'https://www.linkedin.com/in/hengky-darmawan/', '2022-03-01', '2022-08-31', 'rejected', '2022-11-30'),
 (2, 1, 'Web Master', 'Dumet School', 'Tanjung Duren', 'Mempelajari mengenai HTML, CSS, Bootstrap', 'https://getbootstrap.com/', '2022-11-01', '2022-12-01', 'approved', '2022-12-01'),
 (4, 1, 'React Js', 'Digital Talent & KomInfo', 'Online', 'Mempelajari Mengenai React Js', 'https://bucket.cloud.lintasarta.co.id:8082/dts-sertifikat/sertifikat-pdf/e444dae6-c6db-46bd-8da0-23b811772f96.pdf', '2022-05-31', '2022-06-24', 'review', '2022-12-01'),
-(7, 1, 'HTML', 'Progate', 'Online', 'Mempelajari tag - tag HTML', 'https://progate.com/', '2022-12-01', '2022-12-20', 'approved', '2022-12-03'),
-(10, 5, 's', 's', 's', 'a', 'https://getbootstrap.com/docs/4.6/components/buttons/', '2022-12-18', '2022-12-31', 'rejected', '2022-12-22'),
-(12, 3, 'Manajemen', 'Tokopedia', 'Online', 'aaa', 'https://stackoverflow.com', '2022-12-01', '2022-12-31', 'approved', '2022-12-22'),
-(13, 4, 'Data Analyst', 'DQLAB', 'Online', 'SQL', 'https://digitalent.kominfo.go.id/', '2022-10-01', '2022-12-31', 'approved', '2022-12-22');
+(7, 1, 'HTML', 'Progate', 'Online', 'Mempelajari tag - tag HTML', 'https://progate.com/', '2022-12-01', '2022-12-20', 'approved', '2022-12-03');
 
 -- --------------------------------------------------------
 
@@ -225,17 +203,25 @@ INSERT INTO `data_pengalaman` (`id_pengalaman`, `user_id`, `nama_perusahaan`, `j
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_pinjaman`
+-- Table structure for table `izin_absen`
 --
 
-CREATE TABLE `data_pinjaman` (
-  `id_pinjaman` int(11) NOT NULL,
-  `nik_karyawan` varchar(20) NOT NULL,
-  `pinjaman` varchar(20) NOT NULL,
+CREATE TABLE `izin_absen` (
+  `id_izin_absen` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `status_izin` int(11) NOT NULL,
   `alasan` text NOT NULL,
-  `status` varchar(20) NOT NULL,
-  `tgl_pinjam` date NOT NULL
+  `bukti` varchar(128) NOT NULL,
+  `tgl_pengajuan` date NOT NULL,
+  `tgl_submit` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `izin_absen`
+--
+
+INSERT INTO `izin_absen` (`id_izin_absen`, `user_id`, `status_izin`, `alasan`, `bukti`, `tgl_pengajuan`, `tgl_submit`) VALUES
+(1, 1, 1, 'izin sakit', 'https://fontawesome.com', '2023-09-12', '2023-09-11');
 
 -- --------------------------------------------------------
 
@@ -389,14 +375,38 @@ CREATE TABLE `master_pendidikan` (
 INSERT INTO `master_pendidikan` (`id_pendidikan`, `user_id`, `tingkat_pendidikan`, `jurusan`, `universitas`, `alamat_univ`, `judul_skripsi`, `nama_dospem`, `url`, `status`, `tgl_mulai`, `tgl_lulus`) VALUES
 (1, 1, 'S1', 'Teknik Informatika', 'Universitas Dian Nusantara', 'Grogol', 'E-Commerce', 'Giri', 'https://www.google.com/', 'approved', '2013-01-01', '2017-01-31'),
 (2, 1, 'S2', 'Teknik Informatika', 'ITB', 'Bandung', 'HRIS', 'Desi', 'https://www.google.com/', 'approved', '2023-01-12', '2018-01-31'),
-(4, 3, 'S2', 'Ekonomi', 'ITB', 'Depok', 'Investasi', 'Andi', 'https://www.google.com/', 'approved', '2015-07-01', '2019-12-31'),
-(5, 4, 'S1', 'Teknik Informasi', 'Universitas Indonesia', 'Depok', 'Company Profile', 'Henri', 'https://www.google.com/', 'approved', '2018-01-01', '2023-01-12'),
 (6, 5, 'S1', 'Sastra Inggris', 'Universitas Gajah Mada', 'Yogyakarta', 'An Analysis of Symbols in Toba Batak Traditional House', 'Siti', 'https://www.google.com/', 'approved', '2016-01-08', '2022-01-14'),
 (7, 3, 'S3', 'Teknik Mesin', 'Universitas Gajah Mada', 'bandung', 'cara mudah membuat mesin', 'Yusuf', 'https://puslit.mercubuana.ac.id/', 'approved', '2021-11-01', '2024-12-31'),
-(8, 20, 'S1', 'Teknik Informatika', 'Harvad', 'Amerika', 'AI', 'Stev', 'https://disdukcapil.bandaacehkota.go.id/tinymce_upload/tinymce/plugins/imagemanager/F-1.06.pdf', 'approved', '2023-03-01', '2023-03-31'),
 (13, 5, 'S2', 'Sastra Inggris', 'Universitas Gadjah Mada', 'Jl Test', 'An Analysis of Symbols in Javanese Traditional House ', 'Raymond', 'https://google.com', 'review', '2020-06-23', '2022-08-05'),
 (15, 69, 'D1', 'asa', 'sas', 'sa', 'sas', 'sa', 'https://web.whatsapp.com/', 'approved', '2023-05-29', '2023-06-29'),
 (16, 70, 'D1', 'Akuntansi', 'asd', 'aaaaa', 'a', 'aaa', 'approval', 'approved', '2023-07-13', '2023-07-28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `master_pinjaman`
+--
+
+CREATE TABLE `master_pinjaman` (
+  `id_pinjaman` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `total_pinjaman` varchar(128) NOT NULL,
+  `tenor` int(5) NOT NULL,
+  `status_pengajuan` int(11) NOT NULL,
+  `alasan` text NOT NULL,
+  `tgl_pengajuan` date NOT NULL,
+  `tgl_approval` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `master_pinjaman`
+--
+
+INSERT INTO `master_pinjaman` (`id_pinjaman`, `user_id`, `total_pinjaman`, `tenor`, `status_pengajuan`, `alasan`, `tgl_pengajuan`, `tgl_approval`) VALUES
+(1, 70, '1500000', 3, 2, 'Kebutuhan mendesak', '2023-09-12', NULL),
+(2, 70, '1000000', 2, 2, 'sakit', '2023-09-11', NULL),
+(3, 70, '1000000', 5, 2, 'bayar iphone', '2023-09-11', NULL),
+(4, 1, '1500000', 3, 2, 'beli ipong', '2023-09-11', NULL);
 
 -- --------------------------------------------------------
 
@@ -540,7 +550,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `jabatan_id`, `address`, `tmpt_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `status_pernikahan`, `nik_ktp`, `nik_karyawan`, `nama_bank`, `no_rek`, `npwp`, `email`, `email_undira`, `telp`, `nama_darurat`, `telp_darurat`, `no_bpjs_kesehatan`, `no_bpjs_ketenagakerjaan`, `jenis_pegawai`, `image`, `password`, `role_id`, `is_active`, `tgl_bergabung`, `created_at`, `approval`) VALUES
-(1, 'Hengky Darmawans', 1, 'Jakarta Barat, Indonesia', 'Pontianak', '2001-02-22', 'Pria', 'Buddha', 'Singel', '3174092505520003', '1100000000011', 'BCA', '1234567891123', '12.345.678.9-101.012', 'hengky@gmail.com', 'hengkydarmawan66@gmail.com', '082186629996', 'Ani', '082196629997', '12345671111', '123456789', 'tendik', 'default.png', '$2y$10$SIIfMeR3h3is4g6bVxsw7ucmSEuhbF33VhEMfvuKydMOf2IWWtCLW', 1, 1, '2022-12-13', '2021-11-02', 'approved'),
+(1, 'Hengky Darmawans', 1, 'Jakarta Barat, Indonesia', 'Pontianak', '2001-02-22', 'Pria', 'Buddha', 'Singel', '3174092505520003', '41119018', 'BCA', '1234567891123', '12.345.678.9-101.012', 'hengky@gmail.com', 'hengkydarmawan66@gmail.com', '082186629996', 'Ani', '082196629997', '12345671111', '123456789', 'tendik', 'default.png', '$2y$10$MWQQlC2bcyavnx1ox.Cn6..gptZIvMnboWdkn9k6qyq.B5RJe3zI6', 1, 1, '2022-12-13', '2021-11-02', 'approved'),
 (69, 'Hengky Admin', 2, 'Jakarta', 'Paris', '2023-06-01', 'Perempuan', 'Hindu', 'belum menikah', '6101042202010002', '1100000000012', 'BCA', '1221444111', '12.345.678.9-101.017', 'hengkycross172@gmail.com', 'hengkycross172@gmail.com', '089659172256', 'Eko', '085117522255', '123456722', '123456733', 'karyawan', 'default.png', '$2y$10$y/aZYpUB1Z9W6QJlW3X5LurHVRERiWnmsE2nlmvEucyVY/ernoD7G', 2, 1, '2023-06-02', NULL, 'approved'),
 (70, 'Hengky Staf', 8, 'jakarta', 'Jepang', '2023-06-01', 'Perempuan', 'Buddha', 'nikah', '61516444413211', '6151644', 'BCA', '615564641', '12.345.678.9-101.014', 'hengkydarmawan52@gmail.com', 'hengkydarmawan52@gmail.com', '0858815141', 'ada', '0812116163', '123456724', '123456724', 'karyawan', 'default.png', '$2y$10$MbMeJkJH47kWj0nFgpTeeOHKAZZ4FF7q4opokbgHtz1J5f6Rdh8au', 3, 1, '2023-06-22', NULL, 'review'),
 (71, 'Riko (SP)', 1, 'Bandung', 'Bandung', '1999-04-07', 'pria', 'Islam', 'belum menikah', '6101042202010002', '6101042202010002', 'BCA', '1221444111', '12.345.678.9-101.020', 'rikorinaldiansyah26@gmail.com', 'rikorinaldiansyah26@gmail.com', '089659115555', 'tes', '085117522254', '123456722', '1234567', 'Tendik', 'default.png', '$2y$10$XRV9Hx3Y.uhQdpsocTpsgOzlZnqEsbngDkQxcX34D1bHIXKW/Ee6i', 1, 1, '2023-06-05', NULL, 'approved');
@@ -584,7 +594,12 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`, `sub_menu_id`) VALUE
 (103, 1, 26, 0),
 (104, 2, 26, 0),
 (105, 3, 3, 0),
-(106, 1, 7, 0);
+(106, 1, 7, 0),
+(107, 1, 27, 0),
+(108, 3, 27, 0),
+(109, 1, 100, 0),
+(110, 2, 100, 0),
+(111, 3, 100, 0);
 
 -- --------------------------------------------------------
 
@@ -609,8 +624,6 @@ INSERT INTO `user_jabatan` (`id`, `user_id`, `jabatan_id`, `role_id`, `golongan_
 (2, 7, 5, 3, 1),
 (3, 68, 7, 3, 1),
 (4, 68, 9, 3, 1),
-(7, 1, 1, 1, 1),
-(8, 1, 7, 3, 1),
 (20, 71, 1, 1, 1),
 (23, 69, 2, 1, 1),
 (24, 70, 8, 2, 1),
@@ -624,7 +637,9 @@ INSERT INTO `user_jabatan` (`id`, `user_id`, `jabatan_id`, `role_id`, `golongan_
 (32, 75, 4, 3, 2),
 (33, 75, 8, 2, 3),
 (34, 75, 9, 3, 3),
-(35, 75, 16, 3, 1);
+(35, 75, 16, 3, 1),
+(42, 1, 1, 1, 1),
+(43, 1, 7, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -651,11 +666,12 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (7, 'Gaji'),
 (12, 'Master Data'),
 (16, 'Sertifikat'),
-(18, 'Setting'),
 (23, 'Access'),
 (24, 'Payroll'),
 (25, 'Data Slip Gaji User'),
-(26, 'Approval');
+(26, 'Approval'),
+(27, 'Pengajuan'),
+(100, 'Setting');
 
 -- --------------------------------------------------------
 
@@ -703,10 +719,10 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (5, 4, 'Menu Management', 'menu', 'far fa-fw fa-folder', 1),
 (6, 4, 'Sub Menu Management', 'menu/submenu', 'far fa-fw fa-folder-open', 1),
 (13, 1, 'Role', 'admin/role', 'fas fa-fw fa-user-lock', 1),
-(15, 18, 'My Profile', 'setting', 'fas fa-fw fa-users-cog', 1),
+(15, 100, 'My Profile', 'setting', 'fas fa-fw fa-users-cog', 1),
 (17, 12, 'Data Pegawai', 'pegawai', 'fas fa-fw fa-user-tie', 1),
-(18, 18, 'Edit Profile', 'setting/edit', 'fas fa-fw fa-user-edit', 1),
-(19, 18, 'Change Password', 'setting/changepassword', 'fas fa-fw fa-user-lock', 1),
+(18, 100, 'Edit Profile', 'setting/edit', 'fas fa-fw fa-user-edit', 1),
+(19, 100, 'Change Password', 'setting/changepassword', 'fas fa-fw fa-user-lock', 1),
 (20, 12, 'Data Keluarga Pegawai', 'keluarga', 'fas fa-fw fa-house-user', 1),
 (21, 12, 'Data Posisi Jabatan', 'jabatan', 'fas fa-fw fa-briefcase', 1),
 (22, 12, 'Data Pendidikan', 'pendidikan', 'fas fa-fw fa-graduation-cap', 1),
@@ -714,7 +730,6 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (25, 12, 'Data Seminar', 'seminar', 'fas fa-fw fa-laptop', 1),
 (30, 12, 'Data Pengalaman', 'pengalaman', 'fas fa-fw fa-laptop-house', 1),
 (31, 7, 'Data Gaji', 'gaji', 'fas fa-fw fa-money-check', 1),
-(32, 7, 'Slip Gaji', 'gaji/slip', 'fas fa-fw fa-wallet', 1),
 (33, 12, 'Data Libur', 'libur', 'fas fa-fw fa-calendar-week', 1),
 (34, 6, 'Rekap Absen', 'absensi', 'fas fa-fw fa-user-check', 1),
 (35, 12, 'Data Staf', 'staf/pegawai', 'fas fa-fw fa-users', 0),
@@ -723,9 +738,10 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (43, 24, 'Staf', 'payroll/staf', '-', 1),
 (44, 24, 'Dosen', 'payroll/dosen', '-', 1),
 (45, 24, 'Dosen Homebase', 'payroll/homebase', '-', 1),
-(46, 25, 'Slip Gaji user', 'data/alluser', '-', 1),
 (48, 7, 'Data Pinjaman', 'pinjaman', 'fas fa-fw fa-envelope-open-text', 1),
-(49, 7, 'Pembiayaan Tri dharma', 'tridhrma', '-', 1);
+(49, 7, 'Pembiayaan Tri dharma', 'tridhrma', '-', 1),
+(50, 27, 'Pinjaman', 'pengajuan/pinjaman', 'fas fa-fw fa-money-bill', 1),
+(51, 27, 'izin absen', 'pengajuan/absen', 'fas fa-fw fa-user-tie', 1);
 
 -- --------------------------------------------------------
 
@@ -775,10 +791,10 @@ ALTER TABLE `data_pengalaman`
   ADD PRIMARY KEY (`id_pengalaman`);
 
 --
--- Indexes for table `data_pinjaman`
+-- Indexes for table `izin_absen`
 --
-ALTER TABLE `data_pinjaman`
-  ADD PRIMARY KEY (`id_pinjaman`);
+ALTER TABLE `izin_absen`
+  ADD PRIMARY KEY (`id_izin_absen`);
 
 --
 -- Indexes for table `master_hukuman`
@@ -815,6 +831,12 @@ ALTER TABLE `master_parent_jabatan`
 --
 ALTER TABLE `master_pendidikan`
   ADD PRIMARY KEY (`id_pendidikan`);
+
+--
+-- Indexes for table `master_pinjaman`
+--
+ALTER TABLE `master_pinjaman`
+  ADD PRIMARY KEY (`id_pinjaman`);
 
 --
 -- Indexes for table `master_seminar`
@@ -890,7 +912,7 @@ ALTER TABLE `user_token`
 -- AUTO_INCREMENT for table `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `access_jabatan`
@@ -917,10 +939,10 @@ ALTER TABLE `data_pengalaman`
   MODIFY `id_pengalaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `data_pinjaman`
+-- AUTO_INCREMENT for table `izin_absen`
 --
-ALTER TABLE `data_pinjaman`
-  MODIFY `id_pinjaman` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `izin_absen`
+  MODIFY `id_izin_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `master_hukuman`
@@ -959,6 +981,12 @@ ALTER TABLE `master_pendidikan`
   MODIFY `id_pendidikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `master_pinjaman`
+--
+ALTER TABLE `master_pinjaman`
+  MODIFY `id_pinjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `master_seminar`
 --
 ALTER TABLE `master_seminar`
@@ -992,19 +1020,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT for table `user_jabatan`
 --
 ALTER TABLE `user_jabatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `user_role`
@@ -1016,13 +1044,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
