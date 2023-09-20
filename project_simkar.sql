@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2023 at 03:43 AM
+-- Generation Time: Sep 20, 2023 at 04:15 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -221,7 +221,8 @@ CREATE TABLE `izin_absen` (
 --
 
 INSERT INTO `izin_absen` (`id_izin_absen`, `user_id`, `status_izin`, `alasan`, `bukti`, `tgl_pengajuan`, `tgl_submit`) VALUES
-(1, 1, 1, 'izin sakit', 'https://fontawesome.com', '2023-09-12', '2023-09-11');
+(1, 1, 1, 'izin sakit', 'https://fontawesome.com', '2023-09-12', '2023-09-11'),
+(2, 1, 1, 'sss', 'https://www.youtube.com/watch?v=h-woMj_Vt0A&list=RDLWV-f6dMN3Q&index=5', '2023-09-22', '2023-09-20');
 
 -- --------------------------------------------------------
 
@@ -739,9 +740,11 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (44, 24, 'Dosen', 'payroll/dosen', '-', 1),
 (45, 24, 'Dosen Homebase', 'payroll/homebase', '-', 1),
 (48, 7, 'Data Pinjaman', 'pinjaman', 'fas fa-fw fa-envelope-open-text', 1),
-(49, 7, 'Pembiayaan Tri dharma', 'tridhrma', '-', 1),
+(49, 7, 'Pembiayaan Tri dharma', 'tridhrma', 'fas fa-fw fa-receipt', 1),
 (50, 27, 'Pinjaman', 'pengajuan/pinjaman', 'fas fa-fw fa-money-bill', 1),
-(51, 27, 'izin absen', 'pengajuan/absen', 'fas fa-fw fa-user-tie', 1);
+(51, 27, 'izin absen', 'pengajuan/absen', 'fas fa-fw fa-id-card-alt', 1),
+(52, 7, 'Insentif Dosen', 'insentif', 'fas fa-fw fa-wallet', 1),
+(53, 26, 'izin absensi', 'izin', 'fas fa-fw fa-user-clock', 1);
 
 -- --------------------------------------------------------
 
@@ -942,7 +945,7 @@ ALTER TABLE `data_pengalaman`
 -- AUTO_INCREMENT for table `izin_absen`
 --
 ALTER TABLE `izin_absen`
-  MODIFY `id_izin_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_izin_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `master_hukuman`
@@ -1044,7 +1047,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `user_token`
