@@ -8,7 +8,7 @@ class Izin extends CI_Controller {
             $this->load->view('auth/blocked');
             return false;
         }
-        $data['title'] = "Data Izin Absensi";
+        $data['title'] = "Izin Absensi";
         $data['user'] = $this->m_auth->getUserLogin();
         $data['absen'] = $this->m_absen->getAllIzinAbsen();
 

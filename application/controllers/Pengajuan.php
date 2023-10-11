@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Pengajuan extends CI_Controller {
 
     public function pinjaman(){
-        $data['title'] = "Pengajuan Pinjaman";
+        $data['title'] = "Pinjaman";
         $data['user'] = $this->m_auth->getUserLogin();
         $user = $this->db->get_where('user', ['email_undira' => $this->session->userdata('email_undira')])->row_array();
         $user_id = $user['id'];
@@ -60,7 +60,7 @@ class Pengajuan extends CI_Controller {
         $this->load->view('template/footer');
     }
     public function absen(){
-        $data['title'] = "Pengajuan Izin Absen / Penugasan";
+        $data['title'] = "Izin Absen / Penugasan";
         $data['user'] = $this->m_auth->getUserLogin();
         $user = $this->db->get_where('user', ['email_undira' => $this->session->userdata('email_undira')])->row_array();
         $user_id = $user['id'];

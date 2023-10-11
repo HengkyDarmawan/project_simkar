@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2023 at 04:15 AM
+-- Generation Time: Oct 11, 2023 at 06:19 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -47,6 +47,33 @@ INSERT INTO `absensi` (`id`, `id_user`, `tanggal`, `status`, `jam_masuk`, `jam_p
 (49, 1, '2023-09-04', 'masuk', '08:00:00', '16:00:00'),
 (50, 1, '2023-09-05', 'masuk', '08:00:00', '16:00:00'),
 (51, 70, '2023-06-06', 'masuk', '08:00:00', '16:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `absensi_dosen`
+--
+
+CREATE TABLE `absensi_dosen` (
+  `id_absensi_dosen` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `kelas` varchar(128) NOT NULL,
+  `prodi` varchar(128) NOT NULL,
+  `tanggal` date NOT NULL,
+  `status` varchar(128) NOT NULL,
+  `kampus` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `absensi_dosen`
+--
+
+INSERT INTO `absensi_dosen` (`id_absensi_dosen`, `user_id`, `kelas`, `prodi`, `tanggal`, `status`, `kampus`) VALUES
+(1, 1, 'TS3TJ', 'Teknik Sipil', '2023-09-01', 'Y', 'Tanjung Duren'),
+(2, 1, 'TS3TJ', 'Teknik Sipil', '2023-09-02', 'N', 'Tanjung Duren'),
+(3, 1, 'TS3TJ', 'Teknik Sipil', '2023-09-03', 'I', 'Tanjung Duren'),
+(4, 70, 'TS3TJ', 'Teknik Sipil', '2023-09-03', 'I', 'Tanjung Duren'),
+(5, 70, 'TS3TJ', 'Teknik Sipil', '2023-09-02', 'Y', 'Tanjung Duren');
 
 -- --------------------------------------------------------
 
@@ -117,6 +144,27 @@ INSERT INTO `access_jabatan` (`id`, `id_jabatan`, `id_user_sub_menu`, `access_re
 (55, 2, 1, 1, 1, 1, 1),
 (56, 2, 5, 1, 0, 0, 0),
 (57, 2, 6, 1, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bug`
+--
+
+CREATE TABLE `bug` (
+  `id_bug` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `keterangan` text NOT NULL,
+  `bukti` varchar(128) NOT NULL,
+  `status_bug` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bug`
+--
+
+INSERT INTO `bug` (`id_bug`, `user_id`, `keterangan`, `bukti`, `status_bug`) VALUES
+(1, 1, 'ada bug di sub menu data gaji', 'https://docs.google.com/forms/d/e/1FAIpQLSfYww5OnbKG5tmQmypcIj5BR8RjZ4dFgp92A536v4lN7-RzlQ/formResponse', 'review');
 
 -- --------------------------------------------------------
 
@@ -221,8 +269,8 @@ CREATE TABLE `izin_absen` (
 --
 
 INSERT INTO `izin_absen` (`id_izin_absen`, `user_id`, `status_izin`, `alasan`, `bukti`, `tgl_pengajuan`, `tgl_submit`) VALUES
-(1, 1, 1, 'izin sakit', 'https://fontawesome.com', '2023-09-12', '2023-09-11'),
-(2, 1, 1, 'sss', 'https://www.youtube.com/watch?v=h-woMj_Vt0A&list=RDLWV-f6dMN3Q&index=5', '2023-09-22', '2023-09-20');
+(1, 1, 3, 'izin sakit', 'https://fontawesome.com', '2023-09-12', '2023-09-11'),
+(2, 1, 2, 'sss', 'https://www.youtube.com/watch?v=h-woMj_Vt0A&list=RDLWV-f6dMN3Q&index=5', '2023-09-22', '2023-09-20');
 
 -- --------------------------------------------------------
 
@@ -477,6 +525,30 @@ INSERT INTO `master_university` (`id`, `universitas`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tridharma`
+--
+
+CREATE TABLE `tridharma` (
+  `id_tridharma` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `nama_kegiatan` varchar(128) NOT NULL,
+  `lokasi_kegiatan` varchar(128) NOT NULL,
+  `tgl_kegiatan_mulai` date NOT NULL,
+  `tgl_kegiatan_selesai` date NOT NULL,
+  `status_kegiatan` varchar(128) NOT NULL,
+  `link_surat` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tridharma`
+--
+
+INSERT INTO `tridharma` (`id_tridharma`, `user_id`, `nama_kegiatan`, `lokasi_kegiatan`, `tgl_kegiatan_mulai`, `tgl_kegiatan_selesai`, `status_kegiatan`, `link_surat`) VALUES
+(1, 1, 'Desa Cogreg Sistem Desa', 'Desa Cogreg, Bogor', '2023-09-03', '2023-09-23', 'selesai', 'https://digitalent.kominfo.go.id');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `t_gaji_tendik`
 --
 
@@ -551,7 +623,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `jabatan_id`, `address`, `tmpt_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `status_pernikahan`, `nik_ktp`, `nik_karyawan`, `nama_bank`, `no_rek`, `npwp`, `email`, `email_undira`, `telp`, `nama_darurat`, `telp_darurat`, `no_bpjs_kesehatan`, `no_bpjs_ketenagakerjaan`, `jenis_pegawai`, `image`, `password`, `role_id`, `is_active`, `tgl_bergabung`, `created_at`, `approval`) VALUES
-(1, 'Hengky Darmawans', 1, 'Jakarta Barat, Indonesia', 'Pontianak', '2001-02-22', 'Pria', 'Buddha', 'Singel', '3174092505520003', '41119018', 'BCA', '1234567891123', '12.345.678.9-101.012', 'hengky@gmail.com', 'hengkydarmawan66@gmail.com', '082186629996', 'Ani', '082196629997', '12345671111', '123456789', 'tendik', 'default.png', '$2y$10$MWQQlC2bcyavnx1ox.Cn6..gptZIvMnboWdkn9k6qyq.B5RJe3zI6', 1, 1, '2022-12-13', '2021-11-02', 'approved'),
+(1, 'Hengky Darmawans', 1, 'Jakarta Barat, Indonesia', 'Pontianak', '2001-02-22', 'Pria', 'Buddha', 'Singel', '3174092505520003', '41119018', 'BCA', '1234567891123', '12.345.678.9-101.012', 'hengky@gmail.com', 'hengkydarmawan66@gmail.com', '082186629996', 'Ani', '082196629997', '12345671111', '123456789', 'tendik', 'default.png', '$2y$10$wtrTjZ2aVU7GhYq9TT8fVuw8eGuCpZFvw9dvQr7omrXi6u2Y3BZpi', 1, 1, '2022-12-13', '2021-11-02', 'approved'),
 (69, 'Hengky Admin', 2, 'Jakarta', 'Paris', '2023-06-01', 'Perempuan', 'Hindu', 'belum menikah', '6101042202010002', '1100000000012', 'BCA', '1221444111', '12.345.678.9-101.017', 'hengkycross172@gmail.com', 'hengkycross172@gmail.com', '089659172256', 'Eko', '085117522255', '123456722', '123456733', 'karyawan', 'default.png', '$2y$10$y/aZYpUB1Z9W6QJlW3X5LurHVRERiWnmsE2nlmvEucyVY/ernoD7G', 2, 1, '2023-06-02', NULL, 'approved'),
 (70, 'Hengky Staf', 8, 'jakarta', 'Jepang', '2023-06-01', 'Perempuan', 'Buddha', 'nikah', '61516444413211', '6151644', 'BCA', '615564641', '12.345.678.9-101.014', 'hengkydarmawan52@gmail.com', 'hengkydarmawan52@gmail.com', '0858815141', 'ada', '0812116163', '123456724', '123456724', 'karyawan', 'default.png', '$2y$10$MbMeJkJH47kWj0nFgpTeeOHKAZZ4FF7q4opokbgHtz1J5f6Rdh8au', 3, 1, '2023-06-22', NULL, 'review'),
 (71, 'Riko (SP)', 1, 'Bandung', 'Bandung', '1999-04-07', 'pria', 'Islam', 'belum menikah', '6101042202010002', '6101042202010002', 'BCA', '1221444111', '12.345.678.9-101.020', 'rikorinaldiansyah26@gmail.com', 'rikorinaldiansyah26@gmail.com', '089659115555', 'tes', '085117522254', '123456722', '1234567', 'Tendik', 'default.png', '$2y$10$XRV9Hx3Y.uhQdpsocTpsgOzlZnqEsbngDkQxcX34D1bHIXKW/Ee6i', 1, 1, '2023-06-05', NULL, 'approved');
@@ -600,7 +672,8 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`, `sub_menu_id`) VALUE
 (108, 3, 27, 0),
 (109, 1, 100, 0),
 (110, 2, 100, 0),
-(111, 3, 100, 0);
+(111, 3, 100, 0),
+(116, 1, 5, 0);
 
 -- --------------------------------------------------------
 
@@ -739,12 +812,15 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (43, 24, 'Staf', 'payroll/staf', '-', 1),
 (44, 24, 'Dosen', 'payroll/dosen', '-', 1),
 (45, 24, 'Dosen Homebase', 'payroll/homebase', '-', 1),
-(48, 7, 'Data Pinjaman', 'pinjaman', 'fas fa-fw fa-envelope-open-text', 1),
-(49, 7, 'Pembiayaan Tri dharma', 'tridhrma', 'fas fa-fw fa-receipt', 1),
+(48, 7, 'Data Peminjam', 'pinjaman', 'fas fa-fw fa-envelope-open-text', 1),
+(49, 7, 'Pembiayaan Tridharma', 'tridharma', 'fas fa-fw fa-receipt', 1),
 (50, 27, 'Pinjaman', 'pengajuan/pinjaman', 'fas fa-fw fa-money-bill', 1),
-(51, 27, 'izin absen', 'pengajuan/absen', 'fas fa-fw fa-id-card-alt', 1),
+(51, 27, 'Izin Absen / Penugasan', 'pengajuan/absen', 'fas fa-fw fa-id-card-alt', 1),
 (52, 7, 'Insentif Dosen', 'insentif', 'fas fa-fw fa-wallet', 1),
-(53, 26, 'izin absensi', 'izin', 'fas fa-fw fa-user-clock', 1);
+(53, 26, 'Izin Absensi', 'izin', 'fas fa-fw fa-user-clock', 1),
+(54, 6, 'Rekap Absen Dosen', 'dosen', 'fas fa-fw fa-user-check', 1),
+(55, 5, 'Bug', 'bug', 'fas fa-fw fa-bug', 1),
+(56, 5, 'request menu', 'request', 'fas fa-fw fa-hourglass-half', 1);
 
 -- --------------------------------------------------------
 
@@ -770,10 +846,22 @@ ALTER TABLE `absensi`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `absensi_dosen`
+--
+ALTER TABLE `absensi_dosen`
+  ADD PRIMARY KEY (`id_absensi_dosen`);
+
+--
 -- Indexes for table `access_jabatan`
 --
 ALTER TABLE `access_jabatan`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bug`
+--
+ALTER TABLE `bug`
+  ADD PRIMARY KEY (`id_bug`);
 
 --
 -- Indexes for table `data_keluarga`
@@ -860,6 +948,12 @@ ALTER TABLE `master_university`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tridharma`
+--
+ALTER TABLE `tridharma`
+  ADD PRIMARY KEY (`id_tridharma`);
+
+--
 -- Indexes for table `t_gaji_tendik`
 --
 ALTER TABLE `t_gaji_tendik`
@@ -918,10 +1012,22 @@ ALTER TABLE `absensi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
+-- AUTO_INCREMENT for table `absensi_dosen`
+--
+ALTER TABLE `absensi_dosen`
+  MODIFY `id_absensi_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `access_jabatan`
 --
 ALTER TABLE `access_jabatan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+
+--
+-- AUTO_INCREMENT for table `bug`
+--
+ALTER TABLE `bug`
+  MODIFY `id_bug` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `data_keluarga`
@@ -1008,6 +1114,12 @@ ALTER TABLE `master_university`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `tridharma`
+--
+ALTER TABLE `tridharma`
+  MODIFY `id_tridharma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `t_gaji_tendik`
 --
 ALTER TABLE `t_gaji_tendik`
@@ -1023,7 +1135,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `user_jabatan`
@@ -1047,13 +1159,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
