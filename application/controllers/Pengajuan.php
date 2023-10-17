@@ -102,4 +102,16 @@ class Pengajuan extends CI_Controller {
             redirect('pengajuan/absen');
         }
     }
+    
+    public function lembur(){
+        $data['title'] = "Pengajuan Lembur";
+        $data['user'] = $this->m_auth->getUserLogin();
+        $user = $this->db->get_where('user', ['email_undira' => $this->session->userdata('email_undira')])->row_array();
+        $user_id = $user['id'];
+        $data['izinAbsen'] = $this->m_pengajuan->getIzinAbsen($user_id);
+
+		$this->load->view('template/header', $data);
+        $this->load->view('pengajuan/absen', $data);
+        $this->load->view('template/footer');
+    }
 }

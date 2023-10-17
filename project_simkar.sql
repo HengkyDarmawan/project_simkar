@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2023 at 06:19 PM
+-- Generation Time: Oct 17, 2023 at 02:07 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -192,6 +192,28 @@ INSERT INTO `data_keluarga` (`id_keluarga`, `user_id`, `nama_keluarga`, `hubunga
 (14, 70, 'tes', 'tes', '054484544', 'approved'),
 (15, 70, 'tes', 'e', '089674154454', 'rejected'),
 (16, 70, 'as', 'a', '085117522255', 'review');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_lembur`
+--
+
+CREATE TABLE `data_lembur` (
+  `id_lembur` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `tgl_pengajuan` date NOT NULL,
+  `tgl_lembur` date NOT NULL,
+  `jam_lembur` varchar(128) NOT NULL,
+  `status_lembur` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `data_lembur`
+--
+
+INSERT INTO `data_lembur` (`id_lembur`, `user_id`, `tgl_pengajuan`, `tgl_lembur`, `jam_lembur`, `status_lembur`) VALUES
+(1, 1, '2023-10-16', '2023-10-17', '18 - 20', '1');
 
 -- --------------------------------------------------------
 
@@ -663,7 +685,6 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`, `sub_menu_id`) VALUE
 (96, 1, 12, 0),
 (98, 1, 18, 0),
 (99, 1, 6, 0),
-(101, 1, 4, 0),
 (103, 1, 26, 0),
 (104, 2, 26, 0),
 (105, 3, 3, 0),
@@ -673,7 +694,8 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`, `sub_menu_id`) VALUE
 (109, 1, 100, 0),
 (110, 2, 100, 0),
 (111, 3, 100, 0),
-(116, 1, 5, 0);
+(116, 1, 5, 0),
+(117, 1, 4, 0);
 
 -- --------------------------------------------------------
 
@@ -820,7 +842,9 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (53, 26, 'Izin Absensi', 'izin', 'fas fa-fw fa-user-clock', 1),
 (54, 6, 'Rekap Absen Dosen', 'dosen', 'fas fa-fw fa-user-check', 1),
 (55, 5, 'Bug', 'bug', 'fas fa-fw fa-bug', 1),
-(56, 5, 'request menu', 'request', 'fas fa-fw fa-hourglass-half', 1);
+(56, 5, 'request menu', 'request', 'fas fa-fw fa-hourglass-half', 1),
+(58, 7, 'Lembur', 'lembur/index', 'fas fa-fw fa-user-clock', 1),
+(59, 27, 'Pengajuan Lembur', 'pengajuan/lembur', 'fas fa-fw fa-business-time', 1);
 
 -- --------------------------------------------------------
 
@@ -868,6 +892,12 @@ ALTER TABLE `bug`
 --
 ALTER TABLE `data_keluarga`
   ADD PRIMARY KEY (`id_keluarga`);
+
+--
+-- Indexes for table `data_lembur`
+--
+ALTER TABLE `data_lembur`
+  ADD PRIMARY KEY (`id_lembur`);
 
 --
 -- Indexes for table `data_pelatihan`
@@ -1036,6 +1066,12 @@ ALTER TABLE `data_keluarga`
   MODIFY `id_keluarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `data_lembur`
+--
+ALTER TABLE `data_lembur`
+  MODIFY `id_lembur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `data_pelatihan`
 --
 ALTER TABLE `data_pelatihan`
@@ -1135,7 +1171,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `user_jabatan`
@@ -1159,7 +1195,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `user_token`
